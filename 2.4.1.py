@@ -26,7 +26,7 @@ def eduse_all_indexes_of_given_number(given_number, given_list):
 
 # каша из принтов для просмотра результатов функции 
 
-# Печатаем исходный лист и число
+# Печатаем лист с индексами числа 1 в изначальном списке
 print(eduse_all_indexes_of_given_number(exaple_number, example_list))
 
 # применение функции и запись её результата в новый список
@@ -34,15 +34,20 @@ list_of_index_given_number = eduse_all_indexes_of_given_number(exaple_number, ex
 
 # печать первоночального листа после использования функции 
 # Должен быть неизменным, но это не так
-print(example_list)
+print('list after function, but before removing elements by list of indexes:', example_list, sep='')
 
 # удаляем из списка элементы по возвращенным индексам. 
-# Должны быть удалены все 1
+# Должны быть удалены все 1, если бы мы шли по неизмененному первоначальному списку
 for i in list_of_index_given_number:
     example_list.remove(example_list[i])
+# мне не ясно, если функция меняет исходный список, 
+# почему после прохождения по этому циклу список не становится короче 
+# Ведь на 0, 6, 12, 20 местах находятся другие числа. 
+# Чего он их не удаляет?
+
 
 # Печатаю первоначальное число
 print('exaple_number = ', exaple_number)
 
 # Печатаю первоначальный лист
-print('examle_list:\n', example_list)
+print('examle_list:\n', example_list, sep='')
