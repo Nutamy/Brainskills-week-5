@@ -13,8 +13,8 @@ for i in range(len(example_list)):
 # Функция возвращает список всех индексов данного числа в данном списке    
 def eduse_all_indexes_of_given_number(given_number, given_list):
     new_list  = [] # список индексов
-    to_save_list =[] # место для хранения первоначального списка
-    to_save_list = given_list 
+    to_save_list = given_list # место для хранения первоначального списка
+    #to_save_list = given_list 
     displacement = 0 # при удалении элемента из списка нумерация смещается - этот костыль помогает это учесть
     for i in given_list:
         if i == given_number:
@@ -25,16 +25,18 @@ def eduse_all_indexes_of_given_number(given_number, given_list):
     return new_list 
 
 # каша из принтов для просмотра результатов функции 
+# Печатаю первоначальное число
+print('\nexaple_number = ', exaple_number)
 
 # Печатаем лист с индексами числа 1 в изначальном списке
-print(eduse_all_indexes_of_given_number(exaple_number, example_list))
+print('\nlist of indexes of {}:\n'.format(exaple_number), eduse_all_indexes_of_given_number(exaple_number, example_list), sep='')
 
 # применение функции и запись её результата в новый список
 list_of_index_given_number = eduse_all_indexes_of_given_number(exaple_number, example_list)
 
 # печать первоночального листа после использования функции 
 # Должен быть неизменным, но это не так
-print('list after function, but before removing elements by list of indexes:', example_list, sep='')
+print('\nlist after function, but before removing elements by list of indexes (it should content: "1"):\n', example_list, sep='')
 
 # удаляем из списка элементы по возвращенным индексам. 
 # Должны быть удалены все 1, если бы мы шли по неизмененному первоначальному списку
@@ -45,9 +47,5 @@ for i in list_of_index_given_number:
 # Ведь на 0, 6, 12, 20 местах находятся другие числа. 
 # Чего он их не удаляет?
 
-
-# Печатаю первоначальное число
-print('exaple_number = ', exaple_number)
-
 # Печатаю первоначальный лист
-print('examle_list:\n', example_list, sep='')
+print('\nlist after function, and after removing elements by list of indexes:\n', example_list, sep='')
