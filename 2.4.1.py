@@ -13,7 +13,8 @@ for i in range(len(example_list)):
 # Функция возвращает список всех индексов данного числа в данном списке    
 def eduse_all_indexes_of_given_number(given_number, given_list):
     new_list  = [] # список индексов
-    to_save_list = given_list # место для хранения первоначального списка
+    to_save_list = []
+    to_save_list.extend(given_list) # место для хранения первоначального списка
     #to_save_list = given_list 
     displacement = 0 # при удалении элемента из списка нумерация смещается - этот костыль помогает это учесть
     for i in given_list:
@@ -21,7 +22,8 @@ def eduse_all_indexes_of_given_number(given_number, given_list):
             new_list.append(given_list.index(given_number) + displacement) # добавляю в новый список индекс с учетом смещения
             given_list.remove(given_number) # удаляю посчитанный элемент, если не сделать индекс всегда будет одинаковый так как возвращает индекс первого встреченного элемента
             displacement += 1 # после удаление индексы съехали на 1
-    given_list = to_save_list # пытаюсь восстановить список !!! и нифига не выходит!!!
+    given_list.clear()
+    given_list.extend(to_save_list) # пытаюсь восстановить список !!! и нифига не выходит!!!
     return new_list 
 
 # каша из принтов для просмотра результатов функции 
@@ -40,8 +42,10 @@ print('\nlist after function, but before removing elements by list of indexes (i
 
 # удаляем из списка элементы по возвращенным индексам. 
 # Должны быть удалены все 1, если бы мы шли по неизмененному первоначальному списку
+displacement2 = 0
 for i in list_of_index_given_number:
-    example_list.remove(example_list[i])
+    example_list.remove(example_list[i - displacement2])
+    displacement2 += 1
 # мне не ясно, если функция меняет исходный список, 
 # почему после прохождения по этому циклу список не становится короче 
 # Ведь на 0, 6, 12, 20 местах находятся другие числа. 
